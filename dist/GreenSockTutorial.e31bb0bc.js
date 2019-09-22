@@ -11018,17 +11018,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var _gsap = require("gsap");
 
 _gsap.TweenMax.set("#box", {
-  xPercent: -50,
-  yPercent: -50
+  backgroundColor: "green",
+  width: "50px",
+  height: "50px",
+  x: "50px",
+  y: "50px"
 });
 
-document.addEventListener('click', function (event) {
-  var clientX = event.clientX,
-      clientY = event.clientY;
-
-  _gsap.TweenMax.to('#box', 1, {
-    x: clientX,
-    y: clientY
+document.addEventListener("click", function () {
+  _gsap.TweenMax.to("#box", 0.5, {
+    rotation: "+=30"
   });
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
