@@ -11038,7 +11038,24 @@ _gsap.TweenMax.set("#box", {
 // document.querySelector("#box").addEventListener("click", ()=>{
 //     timeline.resume();
 // })
-//ch4
+// //ch4
+// const timeline = new TimelineMax({repeat: -1})
+// timeline.pause()
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+// //timelineは動き続けているのでactiveを取ることが可能。
+// document.querySelector("#box").addEventListener("click", ()=>{
+//     if(timeline.isActive()){
+//         console.log('if');
+//         timeline.pause()
+//     } else{
+//         console.log('else')
+//         timeline.resume();
+//     }
+// })
+//ch5
 
 
 var timeline = new _gsap.TimelineMax({
@@ -11065,6 +11082,19 @@ document.querySelector("#box").addEventListener("click", function () {
   } else {
     console.log('else');
     timeline.resume();
+  }
+});
+document.addEventListener("wheel", function (event) {
+  //timeline.progress　現在の値を取得　ホイールで加算
+  if (event.wheelDelta > 0) {
+    // timeline.progress(timeline.progress() + 0.1)
+    _gsap.TweenMax.to(timeline, .25, {
+      progress: "+=0.1"
+    });
+  } else {
+    _gsap.TweenMax.to(timeline, .25, {
+      progress: "-=0.1"
+    });
   }
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

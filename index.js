@@ -42,7 +42,29 @@ TweenMax.set("#box",{
 //     timeline.resume();
 // })
 
-//ch4
+// //ch4
+// const timeline = new TimelineMax({repeat: -1})
+
+// timeline.pause()
+
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+
+// //timelineは動き続けているのでactiveを取ることが可能。
+// document.querySelector("#box").addEventListener("click", ()=>{
+//     if(timeline.isActive()){
+//         console.log('if');
+//         timeline.pause()
+//     } else{
+//         console.log('else')
+//         timeline.resume();
+//     }
+// })
+
+
+//ch5
 const timeline = new TimelineMax({repeat: -1})
 
 timeline.pause()
@@ -61,4 +83,15 @@ document.querySelector("#box").addEventListener("click", ()=>{
         console.log('else')
         timeline.resume();
     }
+})
+
+document.addEventListener("wheel", (event)=>{
+    //timeline.progress　現在の値を取得　ホイールで加算
+    if(event.wheelDelta > 0){
+        // timeline.progress(timeline.progress() + 0.1)
+        TweenMax.to(timeline, .25,{progress: "+=0.1"})
+    }else{
+        TweenMax.to(timeline, .25,{progress: "-=0.1"})
+    }
+    
 })
