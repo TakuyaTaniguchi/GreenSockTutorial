@@ -28,7 +28,22 @@ TweenMax.set("#box",{
 // })
 
 //ch3
-const timeline = new TimelineMax()
+// const timeline = new TimelineMax()
+
+// timeline.pause()
+
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+
+
+// document.querySelector("#box").addEventListener("click", ()=>{
+//     timeline.resume();
+// })
+
+//ch4
+const timeline = new TimelineMax({repeat: -1})
 
 timeline.pause()
 
@@ -37,7 +52,13 @@ timeline.to("#box",.5,{y: 100})
 timeline.to("#box",.5,{x: 50})
 timeline.to("#box",.5,{y: 50})
 
-
+//timelineは動き続けているのでactiveを取ることが可能。
 document.querySelector("#box").addEventListener("click", ()=>{
-    timeline.resume();
+    if(timeline.isActive()){
+        console.log('if');
+        timeline.pause()
+    } else{
+        console.log('else')
+        timeline.resume();
+    }
 })

@@ -11029,9 +11029,21 @@ _gsap.TweenMax.set("#box", {
 //     })
 // })
 //ch3
+// const timeline = new TimelineMax()
+// timeline.pause()
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+// document.querySelector("#box").addEventListener("click", ()=>{
+//     timeline.resume();
+// })
+//ch4
 
 
-var timeline = new _gsap.TimelineMax();
+var timeline = new _gsap.TimelineMax({
+  repeat: -1
+});
 timeline.pause();
 timeline.to("#box", .5, {
   x: 100
@@ -11044,9 +11056,16 @@ timeline.to("#box", .5, {
 });
 timeline.to("#box", .5, {
   y: 50
-});
+}); //timelineは動き続けているのでactiveを取ることが可能。
+
 document.querySelector("#box").addEventListener("click", function () {
-  timeline.resume();
+  if (timeline.isActive()) {
+    console.log('if');
+    timeline.pause();
+  } else {
+    console.log('else');
+    timeline.resume();
+  }
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
