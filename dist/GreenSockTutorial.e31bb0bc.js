@@ -11056,6 +11056,32 @@ _gsap.TweenMax.set("#box", {
 //     }
 // })
 //ch5
+// const timeline = new TimelineMax({repeat: -1})
+// timeline.pause()
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+// //timelineは動き続けているのでactiveを取ることが可能。
+// document.querySelector("#box").addEventListener("click", ()=>{
+//     if(timeline.isActive()){
+//         console.log('if');
+//         timeline.pause()
+//     } else{
+//         console.log('else')
+//         timeline.resume();
+//     }
+// })
+// document.addEventListener("wheel", (event)=>{
+//     //timeline.progress　現在の値を取得　ホイールで加算
+//     if(event.wheelDelta > 0){
+//         // timeline.progress(timeline.progress() + 0.1)
+//         TweenMax.to(timeline, .25,{progress: "+=0.1"})
+//     }else{
+//         TweenMax.to(timeline, .25,{progress: "-=0.1"})
+//     }
+// })
+//ch6
 
 
 var timeline = new _gsap.TimelineMax({
@@ -11073,29 +11099,20 @@ timeline.to("#box", .5, {
 });
 timeline.to("#box", .5, {
   y: 50
-}); //timelineは動き続けているのでactiveを取ることが可能。
-
-document.querySelector("#box").addEventListener("click", function () {
-  if (timeline.isActive()) {
-    console.log('if');
-    timeline.pause();
-  } else {
-    console.log('else');
-    timeline.resume();
-  }
 });
-document.addEventListener("wheel", function (event) {
-  //timeline.progress　現在の値を取得　ホイールで加算
-  if (event.wheelDelta > 0) {
-    // timeline.progress(timeline.progress() + 0.1)
-    _gsap.TweenMax.to(timeline, .25, {
-      progress: "+=0.1"
-    });
-  } else {
-    _gsap.TweenMax.to(timeline, .25, {
-      progress: "-=0.1"
-    });
-  }
+document.addEventListener("click", function (event) {
+  var x = event.x,
+      y = event.y; // 実行後setされている値に戻る
+  // TweenMax.from('#box',1,{x,y})
+  //最終地を設定できます。
+
+  _gsap.TweenMax.fromTo('#box', 1, {
+    x: x,
+    y: y
+  }, {
+    x: 500,
+    y: 500
+  });
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
