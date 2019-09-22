@@ -1,4 +1,4 @@
-import { TweenMax } from 'gsap'
+import { TweenMax, TimelineMax } from 'gsap'
 
 // TweenMax.to( "{El}", {Time/sec}, {{xORy:px}} )
 
@@ -11,6 +11,8 @@ import { TweenMax } from 'gsap'
 //     TweenMax.to('#box',1 ,{x: clientX, y: clientY})
 // })
 
+
+//ch2
 TweenMax.set("#box",{
     backgroundColor: "green",
     width: "50px",
@@ -19,8 +21,23 @@ TweenMax.set("#box",{
     y: "50px",
 })
 
-document.addEventListener("click",() =>{
-    TweenMax.to("#box",0.5,{
-        rotation: "+=30"
-    })
+// document.addEventListener("click",() =>{
+//     TweenMax.to("#box",0.5,{
+//         rotation: "+=30"
+//     })
+// })
+
+//ch3
+const timeline = new TimelineMax()
+
+timeline.pause()
+
+timeline.to("#box",.5,{x: 100})
+timeline.to("#box",.5,{y: 100})
+timeline.to("#box",.5,{x: 50})
+timeline.to("#box",.5,{y: 50})
+
+
+document.querySelector("#box").addEventListener("click", ()=>{
+    timeline.resume();
 })

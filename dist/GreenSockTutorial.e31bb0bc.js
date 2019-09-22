@@ -11023,12 +11023,30 @@ _gsap.TweenMax.set("#box", {
   height: "50px",
   x: "50px",
   y: "50px"
-});
+}); // document.addEventListener("click",() =>{
+//     TweenMax.to("#box",0.5,{
+//         rotation: "+=30"
+//     })
+// })
+//ch3
 
-document.addEventListener("click", function () {
-  _gsap.TweenMax.to("#box", 0.5, {
-    rotation: "+=30"
-  });
+
+var timeline = new _gsap.TimelineMax();
+timeline.pause();
+timeline.to("#box", .5, {
+  x: 100
+});
+timeline.to("#box", .5, {
+  y: 100
+});
+timeline.to("#box", .5, {
+  x: 50
+});
+timeline.to("#box", .5, {
+  y: 50
+});
+document.querySelector("#box").addEventListener("click", function () {
+  timeline.resume();
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
