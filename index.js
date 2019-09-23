@@ -1,4 +1,4 @@
-import { TweenMax, TimelineMax } from 'gsap'
+import { TweenMax, TimelineMax, Elastic } from 'gsap'
 
 // TweenMax.to( "{El}", {Time/sec}, {{xORy:px}} )
 
@@ -208,23 +208,34 @@ import { TweenMax, TimelineMax } from 'gsap'
 
 //ch11
 
-document.addEventListener("mousemove" , event => {
-    console.log('mousemove');
-    TweenMax.set(document.body, { perspective: event.x })
-})
+// document.addEventListener("mousemove" , event => {
+//     console.log('mousemove');
+//     TweenMax.set(document.body, { perspective: event.x })
+// })
 
-// TweenMax.set(document.body,{ perspective: 200 })
+// // TweenMax.set(document.body,{ perspective: 200 })
 
-Array.from({ length: 30 }).map( () => document.createElement("div"))
-.forEach(box => {
-    box.setAttribute("class", "box")
-    document.body.appendChild(box)
+// Array.from({ length: 30 }).map( () => document.createElement("div"))
+// .forEach(box => {
+//     box.setAttribute("class", "box")
+//     document.body.appendChild(box)
 
-    TweenMax.set(box,{ rotationY: "30"})
-    // box.addEventListener("click", () => {
-    //     if(!TweenMax.isTweening(box)){
-    //         TweenMax.to(box,1, {rotationY: "+=180" })
-    //     }
-    // })
+//     TweenMax.set(box,{ rotationY: "30"})
+//     // box.addEventListener("click", () => {
+//     //     if(!TweenMax.isTweening(box)){
+//     //         TweenMax.to(box,1, {rotationY: "+=180" })
+//     //     }
+//     // })
 
+// })
+
+//ch12
+
+const logo = document.querySelector("img")
+
+TweenMax.to(logo,.75,{
+    scale: 1.25,
+    repeat: -1,
+    yoyo: true,
+    ease: Elastic.easeInOut
 })
