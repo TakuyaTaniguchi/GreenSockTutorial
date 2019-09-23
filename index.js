@@ -117,6 +117,29 @@ TweenMax.set("#box",{
 
 
 //ch7
+// const divs = Array.from({length: 100}, () => 
+//     document.createElement("div")
+// )
+
+// divs.forEach(div => {
+//     TweenMax.set(div,{
+//         position: "absolute",
+//         x: `${Math.random() * window.innerWidth}px`,
+//         y: `${Math.random() * window.innerHeight}px`,
+//         width: 20,
+//         height: 20,
+//         backgroundColor: "green",
+//         border: "3px solid black"
+//     })
+//     document.body.appendChild(div)
+// })
+
+// document.addEventListener("click",event => {
+//     const {x,y} = event
+//     TweenMax.to(divs,1, {x,y})
+// })
+
+//ch8
 const divs = Array.from({length: 100}, () => 
     document.createElement("div")
 )
@@ -134,7 +157,14 @@ divs.forEach(div => {
     document.body.appendChild(div)
 })
 
+TweenMax.to(divs,10, {x: 100,y: 100})
+
+// document.addEventListener("click",event => {
+//     TweenMax.killTweensOf(event.target)
+// })
+
 document.addEventListener("click",event => {
-    const {x,y} = event
-    TweenMax.to(divs,1, {x,y})
+    // TweenMax.killAll()
+    //killした時の状態にジャンプする。
+    TweenMax.killAll(true)
 })

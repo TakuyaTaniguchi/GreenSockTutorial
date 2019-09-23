@@ -11096,6 +11096,26 @@ _gsap.TweenMax.set("#box", {
 //     TweenMax.fromTo('#box',1,{x,y},{x: 500, y: 500})
 // })
 //ch7
+// const divs = Array.from({length: 100}, () => 
+//     document.createElement("div")
+// )
+// divs.forEach(div => {
+//     TweenMax.set(div,{
+//         position: "absolute",
+//         x: `${Math.random() * window.innerWidth}px`,
+//         y: `${Math.random() * window.innerHeight}px`,
+//         width: 20,
+//         height: 20,
+//         backgroundColor: "green",
+//         border: "3px solid black"
+//     })
+//     document.body.appendChild(div)
+// })
+// document.addEventListener("click",event => {
+//     const {x,y} = event
+//     TweenMax.to(divs,1, {x,y})
+// })
+//ch8
 
 
 var divs = Array.from({
@@ -11116,14 +11136,19 @@ divs.forEach(function (div) {
 
   document.body.appendChild(div);
 });
-document.addEventListener("click", function (event) {
-  var x = event.x,
-      y = event.y;
 
-  _gsap.TweenMax.to(divs, 1, {
-    x: x,
-    y: y
-  });
+_gsap.TweenMax.to(divs, 10, {
+  x: 100,
+  y: 100
+}); // document.addEventListener("click",event => {
+//     TweenMax.killTweensOf(event.target)
+// })
+
+
+document.addEventListener("click", function (event) {
+  // TweenMax.killAll()
+  //killした時の状態にジャンプする。
+  _gsap.TweenMax.killAll(true);
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
