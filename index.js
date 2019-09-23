@@ -13,13 +13,13 @@ import { TweenMax, TimelineMax } from 'gsap'
 
 
 //ch2
-TweenMax.set("#box",{
-    backgroundColor: "green",
-    width: "50px",
-    height: "50px",
-    x: "50px",
-    y: "50px",
-})
+// TweenMax.set("#box",{
+//     backgroundColor: "green",
+//     width: "50px",
+//     height: "50px",
+//     x: "50px",
+//     y: "50px",
+// })
 
 // document.addEventListener("click",() =>{
 //     TweenMax.to("#box",0.5,{
@@ -140,31 +140,53 @@ TweenMax.set("#box",{
 // })
 
 //ch8
-const divs = Array.from({length: 100}, () => 
-    document.createElement("div")
-)
+// const divs = Array.from({length: 100}, () => 
+//     document.createElement("div")
+// )
 
-divs.forEach(div => {
-    TweenMax.set(div,{
-        position: "absolute",
-        x: `${Math.random() * window.innerWidth}px`,
-        y: `${Math.random() * window.innerHeight}px`,
-        width: 20,
-        height: 20,
-        backgroundColor: "green",
-        border: "3px solid black"
-    })
-    document.body.appendChild(div)
-})
-
-TweenMax.to(divs,10, {x: 100,y: 100})
-
-// document.addEventListener("click",event => {
-//     TweenMax.killTweensOf(event.target)
+// divs.forEach(div => {
+//     TweenMax.set(div,{
+//         position: "absolute",
+//         x: `${Math.random() * window.innerWidth}px`,
+//         y: `${Math.random() * window.innerHeight}px`,
+//         width: 20,
+//         height: 20,
+//         backgroundColor: "green",
+//         border: "3px solid black"
+//     })
+//     document.body.appendChild(div)
 // })
 
-document.addEventListener("click",event => {
-    // TweenMax.killAll()
-    //killした時の状態にジャンプする。
-    TweenMax.killAll(true)
+// TweenMax.to(divs,10, {x: 100,y: 100})
+
+// // document.addEventListener("click",event => {
+// //     TweenMax.killTweensOf(event.target)
+// // })
+
+// document.addEventListener("click",event => {
+//     // TweenMax.killAll()
+//     //killした時の状態にジャンプする。
+//     TweenMax.killAll(true)
+// })
+
+//ch9
+
+const box = document.createElement("div")
+box.setAttribute("class", "box")
+document.body.appendChild(box)
+
+box.addEventListener("mouseover", () => {
+  TweenMax.to(box, 0.25, { className: "+=hover" })
+})
+
+box.addEventListener("mouseout", () => {
+    TweenMax.to(box, 0.25, { className: "-=hover" })
+})
+
+box.addEventListener("mousedown", () => {
+    TweenMax.to(box, 0.25, { className: "+=down" })
+})
+
+box.addEventListener("mouseup", () => {
+    TweenMax.to(box, 0.25, { className: "-=down" })
 })
