@@ -191,16 +191,40 @@ import { TweenMax, TimelineMax } from 'gsap'
 //     TweenMax.to(box, 0.25, { className: "-=down" })
 // })
 
-//ch10
+// //ch10
 
-const box = document.createElement("div")
-box.setAttribute("class", "box")
-document.body.appendChild(box)
+// const box = document.createElement("div")
+// box.setAttribute("class", "box")
+// document.body.appendChild(box)
 
-TweenMax.set(box,{ transformPerspective: 100 })
+// TweenMax.set(box,{ transformPerspective: 100 })
 
-box.addEventListener("click", () => {
-    TweenMax.to(box,1, {rotationY: "+=180" })
-    // TweenMax.to(box,1, {rotationX: "+=180" })
-    // TweenMax.to(box,1, {rotationZ: "+=180" })
+// box.addEventListener("click", () => {
+//     TweenMax.to(box,1, {rotationY: "+=180" })
+//     // TweenMax.to(box,1, {rotationX: "+=180" })
+//     // TweenMax.to(box,1, {rotationZ: "+=180" })
+// })
+
+
+//ch11
+
+document.addEventListener("mousemove" , event => {
+    console.log('mousemove');
+    TweenMax.set(document.body, { perspective: event.x })
+})
+
+// TweenMax.set(document.body,{ perspective: 200 })
+
+Array.from({ length: 30 }).map( () => document.createElement("div"))
+.forEach(box => {
+    box.setAttribute("class", "box")
+    document.body.appendChild(box)
+
+    TweenMax.set(box,{ rotationY: "30"})
+    // box.addEventListener("click", () => {
+    //     if(!TweenMax.isTweening(box)){
+    //         TweenMax.to(box,1, {rotationY: "+=180" })
+    //     }
+    // })
+
 })

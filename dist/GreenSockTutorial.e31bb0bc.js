@@ -11017,19 +11017,29 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _gsap = require("gsap");
 
-var box = document.createElement("div");
-box.setAttribute("class", "box");
-document.body.appendChild(box);
+document.addEventListener("mousemove", function (event) {
+  console.log('mousemove');
 
-_gsap.TweenMax.set(box, {
-  transformPerspective: 100
-});
+  _gsap.TweenMax.set(document.body, {
+    perspective: event.x
+  });
+}); // TweenMax.set(document.body,{ perspective: 200 })
 
-box.addEventListener("click", function () {
-  _gsap.TweenMax.to(box, 1, {
-    rotationY: "+=180"
-  }); // TweenMax.to(box,1, {rotationX: "+=180" })
-  // TweenMax.to(box,1, {rotationZ: "+=180" })
+Array.from({
+  length: 30
+}).map(function () {
+  return document.createElement("div");
+}).forEach(function (box) {
+  box.setAttribute("class", "box");
+  document.body.appendChild(box);
+
+  _gsap.TweenMax.set(box, {
+    rotationY: "30"
+  }); // box.addEventListener("click", () => {
+  //     if(!TweenMax.isTweening(box)){
+  //         TweenMax.to(box,1, {rotationY: "+=180" })
+  //     }
+  // })
 
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

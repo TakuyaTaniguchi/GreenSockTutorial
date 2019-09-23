@@ -1,15 +1,16 @@
 body{
     margin: 0;
     display: flex;
+    flex-wrap: wrap;
     height: 50vh;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 }
 
 .box{
     width: 100px;
     height: 100px;
     background-color: red;
+    border: 5px solid black;
 }
 
 .hover{
