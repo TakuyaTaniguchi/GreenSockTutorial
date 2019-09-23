@@ -11082,36 +11082,47 @@ _gsap.TweenMax.set("#box", {
 //     }
 // })
 //ch6
+// const timeline = new TimelineMax({repeat: -1})
+// timeline.pause()
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
+// document.addEventListener("click", (event)=>{
+//     const {x,y} = event
+//     // 実行後setされている値に戻る
+//     // TweenMax.from('#box',1,{x,y})
+//     //最終地を設定できます。
+//     TweenMax.fromTo('#box',1,{x,y},{x: 500, y: 500})
+// })
+//ch7
 
 
-var timeline = new _gsap.TimelineMax({
-  repeat: -1
+var divs = Array.from({
+  length: 100
+}, function () {
+  return document.createElement("div");
 });
-timeline.pause();
-timeline.to("#box", .5, {
-  x: 100
-});
-timeline.to("#box", .5, {
-  y: 100
-});
-timeline.to("#box", .5, {
-  x: 50
-});
-timeline.to("#box", .5, {
-  y: 50
+divs.forEach(function (div) {
+  _gsap.TweenMax.set(div, {
+    position: "absolute",
+    x: "".concat(Math.random() * window.innerWidth, "px"),
+    y: "".concat(Math.random() * window.innerHeight, "px"),
+    width: 20,
+    height: 20,
+    backgroundColor: "green",
+    border: "3px solid black"
+  });
+
+  document.body.appendChild(div);
 });
 document.addEventListener("click", function (event) {
   var x = event.x,
-      y = event.y; // 実行後setされている値に戻る
-  // TweenMax.from('#box',1,{x,y})
-  //最終地を設定できます。
+      y = event.y;
 
-  _gsap.TweenMax.fromTo('#box', 1, {
+  _gsap.TweenMax.to(divs, 1, {
     x: x,
     y: y
-  }, {
-    x: 500,
-    y: 500
   });
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {

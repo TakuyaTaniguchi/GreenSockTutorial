@@ -97,20 +97,44 @@ TweenMax.set("#box",{
 
 
 //ch6
-const timeline = new TimelineMax({repeat: -1})
+// const timeline = new TimelineMax({repeat: -1})
 
-timeline.pause()
+// timeline.pause()
 
-timeline.to("#box",.5,{x: 100})
-timeline.to("#box",.5,{y: 100})
-timeline.to("#box",.5,{x: 50})
-timeline.to("#box",.5,{y: 50})
+// timeline.to("#box",.5,{x: 100})
+// timeline.to("#box",.5,{y: 100})
+// timeline.to("#box",.5,{x: 50})
+// timeline.to("#box",.5,{y: 50})
 
-document.addEventListener("click", (event)=>{
+// document.addEventListener("click", (event)=>{
+//     const {x,y} = event
+//     // 実行後setされている値に戻る
+//     // TweenMax.from('#box',1,{x,y})
+
+//     //最終地を設定できます。
+//     TweenMax.fromTo('#box',1,{x,y},{x: 500, y: 500})
+// })
+
+
+//ch7
+const divs = Array.from({length: 100}, () => 
+    document.createElement("div")
+)
+
+divs.forEach(div => {
+    TweenMax.set(div,{
+        position: "absolute",
+        x: `${Math.random() * window.innerWidth}px`,
+        y: `${Math.random() * window.innerHeight}px`,
+        width: 20,
+        height: 20,
+        backgroundColor: "green",
+        border: "3px solid black"
+    })
+    document.body.appendChild(div)
+})
+
+document.addEventListener("click",event => {
     const {x,y} = event
-    // 実行後setされている値に戻る
-    // TweenMax.from('#box',1,{x,y})
-
-    //最終地を設定できます。
-    TweenMax.fromTo('#box',1,{x,y},{x: 500, y: 500})
+    TweenMax.to(divs,1, {x,y})
 })
