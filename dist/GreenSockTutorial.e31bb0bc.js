@@ -11020,25 +11020,17 @@ var _gsap = require("gsap");
 var box = document.createElement("div");
 box.setAttribute("class", "box");
 document.body.appendChild(box);
-box.addEventListener("mouseover", function () {
-  _gsap.TweenMax.to(box, 0.25, {
-    className: "+=hover"
-  });
+
+_gsap.TweenMax.set(box, {
+  transformPerspective: 100
 });
-box.addEventListener("mouseout", function () {
-  _gsap.TweenMax.to(box, 0.25, {
-    className: "-=hover"
-  });
-});
-box.addEventListener("mousedown", function () {
-  _gsap.TweenMax.to(box, 0.25, {
-    className: "+=down"
-  });
-});
-box.addEventListener("mouseup", function () {
-  _gsap.TweenMax.to(box, 0.25, {
-    className: "-=down"
-  });
+
+box.addEventListener("click", function () {
+  _gsap.TweenMax.to(box, 1, {
+    rotationY: "+=180"
+  }); // TweenMax.to(box,1, {rotationX: "+=180" })
+  // TweenMax.to(box,1, {rotationZ: "+=180" })
+
 });
 },{"gsap":"node_modules/gsap/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
